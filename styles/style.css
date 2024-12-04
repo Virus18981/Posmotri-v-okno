@@ -5,14 +5,13 @@
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  
 }
 
 .result {
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-padding-top: 78px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 78px;
 }
 
 .result__video-container {
@@ -22,7 +21,8 @@ padding-top: 78px;
 }
 
 .result__video {
-  width: 100%;
+  width: 711px;
+  height: 386px;
   object-fit: cover;
 }
 
@@ -33,8 +33,7 @@ padding-top: 78px;
 }
 
 .search-form__fieldset {
-margin-top: auto;
-  
+  margin-top: auto;
 }
 
 .search-form__fieldset-title {
@@ -46,7 +45,10 @@ margin-top: auto;
 
 .search-form__label {
   width: fit-content;
-  
+}
+
+.search-form__label:hover {
+  text-decoration: underline;
 }
 
 .search-form__label:focus {
@@ -54,24 +56,27 @@ margin-top: auto;
 }
 
 .search-form__label:has(:focus-visible) {
-  border: 1px solid gray;
+  outline: 1px solid gray;
+  outline-offset: 1px;
 }
 
 .search-form__label-text {
   appearance: none;
-  
 }
 
-.visually-hidden {
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      white-space: nowrap;
-  }
+/*.search-form__label-text:hover {
+  text-decoration: underline;
+}*/
 
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 .search-form__textfield {
   color: white;
@@ -80,51 +85,54 @@ margin-top: auto;
 }
 
 .search-form__checkbox-list {
- 
 }
 
 .search-form__checkbox {
+  
+}
+
+.search-form__checkbox[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+  margin: 0;
+  accent-color: white;
 }
 
 .search-form__pseudo-checkbox {
   display: inline-block;
- border: 1px solid white;
- width: 19px;
- height: 19px;
- cursor: pointer;
+  border: 1px solid white;
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
 }
 
-.search-form__pseudo-checkbox:active(::marker) {
+.search-form__pseudo-checkbox:active {
   background-color: white;
-  color: azure;
-width: 17px;
-height: 17px;
+  border: 2px solid black;
+  width: 19px;
+  height: 19px;
 }
 
-.search-form__pseudo-checkbox[type="checkbox"]:disabled + .search-form__checkbox {
-  
+.search-form__pseudo-checkbox[type="checkbox"]:disabled
+  + .search-form__checkbox {
 }
 
-.search-form__pseudo-checkbox[type="checkbox"]:checked + .search-form__checkbox {
-  
+.search-form__pseudo-checkbox[type="checkbox"]:checked
+  + .search-form__checkbox {
 }
 
-.search-form__pseudo-checkbox[type="checkbox"]:focus-visible + .search-form__checkbox {
-  
+.search-form__pseudo-checkbox[type="checkbox"]:focus-visible
+  + .search-form__checkbox {
 }
 
 .search-form__pseudo-checkbox[type="checkbox"]:hover + .search-form__checkbox {
- 
 }
 
 .search-form__pseudo-checkbox[type="checkbox"]:active + .search-form__checkbox {
-  
 }
 
 .search-form__pseudo-checkbox[type="checkbox"]:focus + .search-form__checkbox {
-  
 }
-
 
 .button {
   color: white;
@@ -132,9 +140,16 @@ height: 17px;
   border: 1px solid white;
   font-size: 18px;
   font-weight: 700;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   cursor: pointer;
-  
+}
+
+.button:active {
+  background-color: gray;
+}
+
+.button:hover {
+  text-decoration: underline;
 }
 
 .search-form__submit-button {
@@ -145,7 +160,54 @@ height: 17px;
 .content__details {
   width: inherit;
   height: inherit;
-  
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 1px; /* ширина для вертикального скролла */
+  height: 1px; /* высота для горизонтального скролла */
+  background-color: transparent;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  background: linear-gradient(30deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(150deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(270deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+  background: linear-gradient(210deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(330deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(90deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+  background-color: transparent;
 }
 
 .title {
@@ -161,9 +223,10 @@ height: 17px;
 }
 
 .content__list {
- max-height: 298px;
-  overflow: hidden;
-  width: 400px;
+  position: relative;
+  height: 298px;
+  overflow: auto;
+  min-width: 400px;
 }
 
 /*----------ТЕМПЛЕЙТЫ-----------*/
@@ -178,7 +241,7 @@ height: 17px;
 }
 
 .content__list-item {
-  
+  width: 398px;
 }
 
 .content__list-item:not(:last-of-type) {
@@ -186,13 +249,21 @@ height: 17px;
 }
 
 .content__card-link {
-  color:  #FFFFFF;
-text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .content__video-card {
- display: flex;
- justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content__video-card:active {
+  background-color: gray;
+}
+
+.content__video-card:hover {
+  text-decoration: underline;
 }
 
 .content__video-card-description-container {
@@ -225,5 +296,4 @@ text-decoration: none;
 .more-button {
   padding: 6px 145.5px;
   white-space: nowrap;
-  
 }
