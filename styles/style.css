@@ -1,17 +1,17 @@
 .content {
   max-height: 534px;
-  width: 1140px;
+  width: 100%;
   margin: 133px 30px;
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
   gap: 30px;
 }
 
 .result {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: 78px;
+  flex-grow: 1;
+  gap: 16px;
 }
 
 .result__video-container {
@@ -21,20 +21,22 @@
 }
 
 .result__video {
-  width: 711px;
-  height: 386px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .search-form {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
 }
 
 .search-form__fieldset {
-  margin-top: auto;
-  min-width: 212px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  flex-shrink: 0;
 }
 
 .search-form__fieldset-title {
@@ -45,9 +47,15 @@
 }
 
 .search-form__label {
-  width: fit-content;
-  display: inline;
- 
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-form__label:hover .search-form__label-text{
+  text-decoration: underline;
 }
 
 .search-form__label:focus {
@@ -55,17 +63,13 @@
 }
 
 .search-form__label:has(:focus-visible) {
-  outline: 1px solid gray;
+  outline: 1px solid #FFF;
   outline-offset: 1px;
 }
 
 .search-form__label-text {
   appearance: none;
   
-}
-
-.search-form__label-text:hover {
-  text-decoration: underline;
 }
 
 .visually-hidden {
@@ -82,21 +86,39 @@
   color: white;
   background-color: transparent;
   width: 225px;
+  appearance: none;
   font-family: inherit;
   font-size: inherit;
-  
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+  cursor: pointer;
 }
 
 .search-form__textfield:focus {
   outline: none;
 }
 
-.search-form__checkbox-list {
-  display: inline;
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.70);
 }
 
-.search-form__checkbox {
-  
+.search-form__textfield:active {
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+.search-form__checkbox:checked ~ .search-form__pseudo-checkbox{
+  background-color: white;
+  border: 2px solid black;
+  width: 19px;
+  height: 19px;
 }
 
 .search-form__checkbox[type="checkbox"] {
@@ -111,8 +133,10 @@
   outline: 1px solid white;
   width: 19px;
   height: 19px;
-  cursor: pointer;
+  cursor: pointer; 
 }
+
+
 
 .search-form__pseudo-checkbox:active {
   background-color: white;
@@ -121,42 +145,24 @@
   height: 19px;
 }
 
-.search-form__pseudo-checkbox[type="checkbox"]:disabled
-  + .search-form__checkbox {
-}
-
-.search-form__pseudo-checkbox[type="checkbox"]:checked
-  + .search-form__checkbox {
-}
-
-.search-form__pseudo-checkbox[type="checkbox"]:focus-visible
-  + .search-form__checkbox {
-}
-
-.search-form__pseudo-checkbox[type="checkbox"]:hover + .search-form__checkbox {
-}
-
-.search-form__pseudo-checkbox[type="checkbox"]:active + .search-form__checkbox {
-}
-
-.search-form__pseudo-checkbox[type="checkbox"]:focus + .search-form__checkbox {
-}
-
 .button {
   color: white;
   background-color: transparent;
   border: 1px solid white;
   font-size: 18px;
   font-weight: 700;
+  min-height: 34px;
   font-family: "Fira Sans Condensed", sans-serif;
   cursor: pointer;
 }
 
 .button:active {
   background-color: gray;
+  text-decoration: none;
 }
 
 .button:hover {
+  cursor: pointer;
   text-decoration: underline;
 }
 
@@ -165,67 +171,36 @@
 }
 
 .button:focus-visible {
-  outline: 1px solid gray;
+  outline: 1px solid #FFF;
   outline-offset: 1px;
 }
 
 .search-form__submit-button {
   padding: 5px 73.5px;
   margin-top: 20px;
+  align-self: flex-end;
 }
 
 .content__details {
   width: inherit;
-  height: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
 }
 
-/* полоса прокрутки (скроллбар) */
-::-webkit-scrollbar {
-  width: 1px; /* ширина для вертикального скролла */
-  height: 1px; /* высота для горизонтального скролла */
-  background-color: transparent;
+.content__list::-webkit-scrollbar {
+  width: 6px;
 }
 
-/* ползунок скроллбара */
-::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border-radius: 9em;
-  box-shadow: inset 1px 1px 10px transparent;
+.content__list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.70);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: transparent;
+.content__list::-webkit-scrollbar-thumb {
+  background-color: #545050;
+  width: 4px;
 }
 
-/* Стрелки */
-
-::-webkit-scrollbar-button:vertical:start:decrement {
-  background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-button:vertical:end:increment {
-  background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-button:horizontal:start:decrement {
-  background: linear-gradient(30deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(150deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(270deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: transparent;
-}
-
-::-webkit-scrollbar-button:horizontal:end:increment {
-  background: linear-gradient(210deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(330deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
-    linear-gradient(90deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
-  background-color: transparent;
-}
 
 .title {
   font-family: "Oswald", sans-serif;
@@ -242,6 +217,8 @@
 
 .content__list {
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 298px;
   overflow: auto;
   min-width: 400px;
@@ -270,7 +247,30 @@
   color: #ffffff;
   text-decoration: none;
   display: block;
-  margin: 2px;
+  padding: 1px;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:hover {
+  text-decoration: underline; 
+}
+
+.content__card-link:focus-visible {
+  border-color: #FFF;
+}
+
+.content__card-link:active {
+  border-color: #545050;
+  background-color: #545050;
+  text-decoration: none;
+}
+
+.content__card-link_current {
+  border-color: #545050;
+  background-color: #545050;
 }
 
 .content__video-card {
@@ -316,6 +316,7 @@
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
+  object-fit: cover;
 }
 
 .more-button-template {
